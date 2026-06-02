@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Calistenia">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#00d4ff">
+<meta name="msapplication-TileColor" content="#080c10">
+<link rel="manifest" href="./manifest.json">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAYAAAA9zQYyAAAEfUlEQVR42u3dMZLcRgyG0Q4VKHAp9BV9CF/S9xlfwC57l+zuH8ALvnwFvsJyRxz2+vHzt4/UpWUIAloCWgJaAlpAS0BLQHca3l+fbZkv0CXhgg70KMCAA90eMdxAt0UM93DQnRHDPQj0RMgTYS+I4QYaZLCBBhlsoGGGehZoEMFuAToZxM9fv//vwAa6HNrvBnVz0J3xpiMHujjmJMQpuIEuhrkC4tu4gQ6HXBnxTdxAh2HuCPk0bKADME+AfBI20JcwT4R8CjbQBzGDfAY20CCD3RE0yP1gjwUN877+/Pzxn3VEvWCeB/nfYHdAXR40xM8w79zWY0DDnIW5E+oFM8ydUK9qmAHeh/mfUL8Fux1omOuCroR6wQxzJ9QlQMObAfoN1OVBw9wLdDrqBTPQXwWdjHrBDPR3QKeijgQNaw3QT1GXAW07A30L9YIZ6Ceg01AvtxpAPwWddOuxYIb6KeYk1EADDXQiZq/BfdZTzCmoV5fNDOVz0AnXojTobq+erVzKF2+vg04ZIpQ9QD9FvTpsZ6AzH88tB7rLRlAW6CeoV4ftDHTuFyiABhroG6C7DE77/2PrJGqgBXSnoenMowenUAMtoDsNTNkHiW4H3W0DKP9k3DjQU44RBvr+lgbas9jxpwVsA931oHfQ8o+/iAFd4ZwQ0PpsaaCBngm64x8bQPe77VgdtjPQtjTQQAMNtFqAroAEaKiBBhpooAU00AIaaKBDQFf6sB7oWqgfg64CBGhbGmiggQZaQAMtoIEGGmigga7/kR3QProDGmiggRbQQAtooIEGGmiggQYaaKAFNNACGmiggQYaaM9yyLMcQAtooAU00EADDTTQQKs9aO/lUKv3cnhzkrwKDGgBDTTQQAMNNNBADwftjBVVwAw00EADrbGgnSSrN6+Vs76BHrWdgQYa6FQwQLvd+DLo5C39BLQ+LbYz0AI6dWBQ5oPefbvxLdCpWxrKnqC/bPMU6N1DgzIb9IntDLSATkUNZS7oU5iBFtCpqKHMBH0SM9AC+g3QOwYIZR7oJz/PFdBJWxrKPqAfebwF+u0hQvlp8xvzKuiULQ1lD9CPLd4E/eYgofy0+G0ZATrtD0TVe975DcyvgoZatzEDLaChVirmONBQz8McDxpqmG9h3gbarQfQNzDHgobado4DDTXMpzFvBw01zCcxHwENNcynMJcBDXUPzG1AQw3zCcxHQUMNczvQb6EGuw7kk5ivgIYa5nagoYYZaLDLvfByFGioYW4HGmqY24HegRrse18svm4pATTYILcEvQs12Htf9RDlJw30TtRTYe+cZ5ydRNC7UU+BvXuGkW5SQZ9A3RX2ibnFmkkGfRJ2ddynZhRvpQLok6gr4T49kxJOqoC+gToR960ZlDFSCfRt2BOPey5noyLoFNRvYE/+d5R0URV0BdhVK+2hOmiwQW4JGmqY24EGey7k1qDBngd5BGi4ZyAeCXoy7FHXdxroKbjHXtPJoLvhdh2BLo/b9QK6NHDXA+iS0M0XaAloAS0BLQEtAS2gpSb9DeNDnjhhJ4fdAAAAAElFTkSuQmCC">
+<link rel="apple-touch-icon" sizes="180x180" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAYAAAA9zQYyAAAEfUlEQVR42u3dMZLcRgyG0Q4VKHAp9BV9CF/S9xlfwC57l+zuH8ALvnwFvsJyRxz2+vHzt4/UpWUIAloCWgJaAlpAS0BLQHca3l+fbZkv0CXhgg70KMCAA90eMdxAt0UM93DQnRHDPQj0RMgTYS+I4QYaZLCBBhlsoGGGehZoEMFuAToZxM9fv//vwAa6HNrvBnVz0J3xpiMHujjmJMQpuIEuhrkC4tu4gQ6HXBnxTdxAh2HuCPk0bKADME+AfBI20JcwT4R8CjbQBzGDfAY20CCD3RE0yP1gjwUN877+/Pzxn3VEvWCeB/nfYHdAXR40xM8w79zWY0DDnIW5E+oFM8ydUK9qmAHeh/mfUL8Fux1omOuCroR6wQxzJ9QlQMObAfoN1OVBw9wLdDrqBTPQXwWdjHrBDPR3QKeijgQNaw3QT1GXAW07A30L9YIZ6Ceg01AvtxpAPwWddOuxYIb6KeYk1EADDXQiZq/BfdZTzCmoV5fNDOVz0AnXojTobq+erVzKF2+vg04ZIpQ9QD9FvTpsZ6AzH88tB7rLRlAW6CeoV4ftDHTuFyiABhroG6C7DE77/2PrJGqgBXSnoenMowenUAMtoDsNTNkHiW4H3W0DKP9k3DjQU44RBvr+lgbas9jxpwVsA931oHfQ8o+/iAFd4ZwQ0PpsaaCBngm64x8bQPe77VgdtjPQtjTQQAMNtFqAroAEaKiBBhpooAU00AIaaKBDQFf6sB7oWqgfg64CBGhbGmiggQZaQAMtoIEGGmigga7/kR3QProDGmiggRbQQAtooIEGGmiggQYaaKAFNNACGmiggQYaaM9yyLMcQAtooAU00EADDTTQQKs9aO/lUKv3cnhzkrwKDGgBDTTQQAMNNNBADwftjBVVwAw00EADrbGgnSSrN6+Vs76BHrWdgQYa6FQwQLvd+DLo5C39BLQ+LbYz0AI6dWBQ5oPefbvxLdCpWxrKnqC/bPMU6N1DgzIb9IntDLSATkUNZS7oU5iBFtCpqKHMBH0SM9AC+g3QOwYIZR7oJz/PFdBJWxrKPqAfebwF+u0hQvlp8xvzKuiULQ1lD9CPLd4E/eYgofy0+G0ZATrtD0TVe975DcyvgoZatzEDLaChVirmONBQz8McDxpqmG9h3gbarQfQNzDHgobado4DDTXMpzFvBw01zCcxHwENNcynMJcBDXUPzG1AQw3zCcxHQUMNczvQb6EGuw7kk5ivgIYa5nagoYYZaLDLvfByFGioYW4HGmqY24HegRrse18svm4pATTYILcEvQs12Htf9RDlJw30TtRTYe+cZ5ydRNC7UU+BvXuGkW5SQZ9A3RX2ibnFmkkGfRJ2ddynZhRvpQLok6gr4T49kxJOqoC+gToR960ZlDFSCfRt2BOPey5noyLoFNRvYE/+d5R0URV0BdhVK+2hOmiwQW4JGmqY24EGey7k1qDBngd5BGi4ZyAeCXoy7FHXdxroKbjHXtPJoLvhdh2BLo/b9QK6NHDXA+iS0M0XaAloAS0BLQEtAS2gpSb9DeNDnjhhJ4fdAAAAAElFTkSuQmCC">
+<link rel="apple-touch-icon" sizes="152x152" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAE50lEQVR42u3dMZLUQBBEUZkYaxCYXJFD7CW5z3ACgmWk7q6sekb6RM9/0mwQI13fPr6/zKbucggGgBkAZgCYAWAGgBkAZgDY3UP+/Xp7zg+A1oHfnfMHYEzsUAAgehgAEDwQAIgeBgCEDwIAoocBAOGDAIDwQQBA+CAMByBYEMYCECkEIwEIE4SRACqG8fHj57KBAECp+FfGnoQCgCHhVwi+MggAGsafEH0lDAA0iD85+goYAAgMv2P0pzEAEBD/pPBPQACgaPyTw98NAYBC8Qv+DAQADscv8PMQABA/BADsi1/INSEAIP6j+3z9+ucmILg6xi/we+HvhDAegPjrhv83CJ0QXF3iF/na+FffDcYBEH9e/B0RXOIH4A6AdASX+MU/GcElfgCeAJCKIBKAuM/GvwNBOwDinwEgDcElfgCeBpCE4BI/ACsApCCIACDoTABPIYgFIH4AqiO4xA/AagCVEZQFIOJeAJ5AEANA/ACkIAAAgm3xjwAgfgCSEFwd4/fs/jV7Iv5qCAAwALp99RHrOgCVPqc2ACa8RaXDqj1ypQyAagcr1hkAnkBwdbv6A5D3TNVoAN0O1PJe/gcAAACcAOBVogCkIwDAANgNYMJ7cwHY+9ltB9D1SmKZAN5FcHW7+gOQ/2qp8gA6X0UsF8A7CK5uV38AerxcEAAAAKgIoPst1I9y8t9LVhJA0kvdBJiNAAAAAAAAAAAeBpASFAAQAAAAAAAAAMBDAJJiAgCCryIAAAAAAAAAAAAAAOBZAIn/jQ5AHwSPAUgLCQAAvooAAAAAAAAAAAAAAID8P4ABgAAAAAAAAAAAAAAAgHsAEiMCAICvIgAAAAAAAAAAAAAAAAAAAABAbAAAYAAAYAAAYAAAYAAAYAAAYAAAYAAAYAAAYK0B+D2A+UEMAAYAAAYAAAaA5wKZ5wIBYAAAYAAAYL0BeD+AdfwD2BtiABh99QcAAAAAAAAAAAAAwJviAZgVPwAAAAAAAAA0QwCA+AEAAAAAAACgCICdYd0FYNkXsaUAEu4CYp0L4L9bBsAAaPY1SKzZAHZ9/XkbQPW7gFhnAnir490AdhykWHMB7Lz63wJQ+S4g1nkA3m74BIDVhynWTAC7r/4AGAB3AFRFINY8ACfiB8AAuAugIgKxZgE4FX8JACsOVqw5AO7+m0oAqHYXEOsMAI90WwHA04cr1gwAp6/+jwKohECs9QFUiL8tAOv7Y5fSACCwpPiXAIDAUuIHwABYAQACS4i/NAAIxB8NAAKrHv9yABBY5fhjAEAwN/54ABCIv2r82wBAIP6K8W8FAIH4q8UfCwCC3vG3BQCB+CvFfwQABOKvEv8xABCIv0L8RwFAIP7T8R8H8DQCEDIfP3+0v9MAIBD/eAArEIBQ/0kbJbqrAgAC8Y8HsAoBCLWerlGqt2oAIBD/eAArEYBw7plKJTurCmA1AhD2PkysbGOVAexAMB3CjvMt3Vd1ALsQTIOw60zLt5UAYDeErhh2nl9MU0kAdiPogOHEeUX1lAbgFIIkDCfPJ66lRAAVIFQCUeEcYhtKBlAFwfRXwEb3kw6gMoTua9FNFwAgCB8ACMQPAAjCBwAE4QMAgvABAEH4AMAgegBAED4A0zH4fAEYBcLnB8A4DD4nAMagcP4AtAbi/AAwA8AMADMAzAAwA8AMALMb+wN/iBYj5/juMgAAAABJRU5ErkJggg==">
+<link rel="icon" type="image/png" sizes="192x192" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAE50lEQVR42u3dMZLUQBBEUZkYaxCYXJFD7CW5z3ACgmWk7q6sekb6RM9/0mwQI13fPr6/zKbucggGgBkAZgCYAWAGgBkAZgDY3UP+/Xp7zg+A1oHfnfMHYEzsUAAgehgAEDwQAIgeBgCEDwIAoocBAOGDAIDwQQBA+CAMByBYEMYCECkEIwEIE4SRACqG8fHj57KBAECp+FfGnoQCgCHhVwi+MggAGsafEH0lDAA0iD85+goYAAgMv2P0pzEAEBD/pPBPQACgaPyTw98NAYBC8Qv+DAQADscv8PMQABA/BADsi1/INSEAIP6j+3z9+ucmILg6xi/we+HvhDAegPjrhv83CJ0QXF3iF/na+FffDcYBEH9e/B0RXOIH4A6AdASX+MU/GcElfgCeAJCKIBKAuM/GvwNBOwDinwEgDcElfgCeBpCE4BI/ACsApCCIACDoTABPIYgFIH4AqiO4xA/AagCVEZQFIOJeAJ5AEANA/ACkIAAAgm3xjwAgfgCSEFwd4/fs/jV7Iv5qCAAwALp99RHrOgCVPqc2ACa8RaXDqj1ypQyAagcr1hkAnkBwdbv6A5D3TNVoAN0O1PJe/gcAAACcAOBVogCkIwDAANgNYMJ7cwHY+9ltB9D1SmKZAN5FcHW7+gOQ/2qp8gA6X0UsF8A7CK5uV38AerxcEAAAAKgIoPst1I9y8t9LVhJA0kvdBJiNAAAAAAAAAAAeBpASFAAQAAAAAAAAAMBDAJJiAgCCryIAAAAAAAAAAAAAAOBZAIn/jQ5AHwSPAUgLCQAAvooAAAAAAAAAAAAAAID8P4ABgAAAAAAAAAAAAAAAgHsAEiMCAICvIgAAAAAAAAAAAAAAAAAAAABAbAAAYAAAYAAAYAAAYAAAYAAAYAAAYAAAYAAAYK0B+D2A+UEMAAYAAAYAAAaA5wKZ5wIBYAAAYAAAYL0BeD+AdfwD2BtiABh99QcAAAAAAAAAAAAAwJviAZgVPwAAAAAAAAA0QwCA+AEAAAAAAACgCICdYd0FYNkXsaUAEu4CYp0L4L9bBsAAaPY1SKzZAHZ9/XkbQPW7gFhnAnir490AdhykWHMB7Lz63wJQ+S4g1nkA3m74BIDVhynWTAC7r/4AGAB3AFRFINY8ACfiB8AAuAugIgKxZgE4FX8JACsOVqw5AO7+m0oAqHYXEOsMAI90WwHA04cr1gwAp6/+jwKohECs9QFUiL8tAOv7Y5fSACCwpPiXAIDAUuIHwABYAQACS4i/NAAIxB8NAAKrHv9yABBY5fhjAEAwN/54ABCIv2r82wBAIP6K8W8FAIH4q8UfCwCC3vG3BQCB+CvFfwQABOKvEv8xABCIv0L8RwFAIP7T8R8H8DQCEDIfP3+0v9MAIBD/eAArEIBQ/0kbJbqrAgAC8Y8HsAoBCLWerlGqt2oAIBD/eAArEYBw7plKJTurCmA1AhD2PkysbGOVAexAMB3CjvMt3Vd1ALsQTIOw60zLt5UAYDeErhh2nl9MU0kAdiPogOHEeUX1lAbgFIIkDCfPJ66lRAAVIFQCUeEcYhtKBlAFwfRXwEb3kw6gMoTua9FNFwAgCB8ACMQPAAjCBwAE4QMAgvABAEH4AMAgegBAED4A0zH4fAEYBcLnB8A4DD4nAMagcP4AtAbi/AAwA8AMADMAzAAwA8AMALMb+wN/iBYj5/juMgAAAABJRU5ErkJggg==">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CALISTENIA PRO</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600;700&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#080c10;--surface:#0f1419;--surface2:#171e26;--border:#1e2a36;--accent:#00d4ff;--accent2:#ff6b35;--accent3:#7fff6b;--text:#e8f0f8;--muted:#4a6070;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:'Nunito',sans-serif;min-height:100vh;overflow-x:hidden;}
+
+/* ── SETUP ── */
+#setup{min-height:100vh;display:flex;flex-direction:column;padding:0;position:relative;overflow:hidden;}
+#setup::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 20% 0%,rgba(0,212,255,0.08) 0%,transparent 50%),radial-gradient(ellipse at 80% 100%,rgba(255,107,53,0.06) 0%,transparent 50%);pointer-events:none;}
+.s-header{padding:48px 24px 20px;text-align:center;}
+.s-logo{font-family:'Oswald',sans-serif;font-size:52px;font-weight:700;letter-spacing:4px;background:linear-gradient(135deg,var(--accent),var(--accent3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.s-tag{color:var(--muted);font-size:11px;letter-spacing:3px;text-transform:uppercase;margin-top:4px;}
+.s-body{flex:1;padding:8px 20px 32px;}
+.s-step{display:none;animation:fadeSlide .35s cubic-bezier(.34,1.56,.64,1);}
+.s-step.active{display:block;}
+@keyframes fadeSlide{from{opacity:0;transform:translateX(24px)}to{opacity:1;transform:translateX(0)}}
+.s-dots{display:flex;justify-content:center;gap:8px;margin-bottom:28px;}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--border);transition:all .3s;}
+.dot.active{background:var(--accent);width:24px;border-radius:4px;}
+.s-label{font-size:10px;color:var(--accent);letter-spacing:3px;text-transform:uppercase;margin-bottom:8px;font-weight:700;}
+.s-title{font-family:'Oswald',sans-serif;font-size:30px;font-weight:600;margin-bottom:24px;line-height:1.1;}
+.opt-grid{display:flex;flex-direction:column;gap:12px;}
+.opt{background:var(--surface);border:1.5px solid var(--border);border-radius:16px;padding:18px 20px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:16px;position:relative;overflow:hidden;}
+.opt.sel{border-color:var(--accent);background:rgba(0,212,255,0.06);}
+.opt-icon{font-size:30px;flex-shrink:0;}
+.opt-info{flex:1;}
+.opt-name{font-weight:700;font-size:16px;margin-bottom:2px;}
+.opt-desc{font-size:12px;color:var(--muted);line-height:1.4;}
+.opt-chk{width:24px;height:24px;border-radius:50%;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;transition:all .2s;}
+.opt.sel .opt-chk{background:var(--accent);border-color:var(--accent);color:#000;font-weight:900;}
+.days-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+.day-opt{background:var(--surface);border:1.5px solid var(--border);border-radius:14px;padding:18px 8px;cursor:pointer;text-align:center;transition:all .2s;}
+.day-opt.sel{border-color:var(--accent);background:rgba(0,212,255,0.08);color:var(--accent);}
+.day-opt-n{font-family:'Oswald',sans-serif;font-size:34px;font-weight:700;line-height:1;}
+.day-opt-l{font-size:10px;color:var(--muted);margin-top:4px;letter-spacing:1px;}
+.day-opt.sel .day-opt-l{color:var(--accent);}
+.s-nav{display:flex;gap:12px;margin-top:28px;}
+.btn-next{flex:1;padding:16px;background:linear-gradient(135deg,var(--accent),#0099cc);color:#000;font-family:'Oswald',sans-serif;font-size:18px;font-weight:700;letter-spacing:2px;border:none;border-radius:14px;cursor:pointer;transition:all .2s;}
+.btn-next:hover{transform:scale(1.02);}
+.btn-next:disabled{opacity:.3;cursor:not-allowed;}
+.btn-back{padding:16px 20px;background:var(--surface);border:1.5px solid var(--border);color:var(--muted);font-size:18px;border-radius:14px;cursor:pointer;transition:all .2s;}
+
+/* ── LOADING ── */
+#loading{display:none;min-height:100vh;align-items:center;justify-content:center;flex-direction:column;gap:20px;padding:32px;}
+.spin{width:80px;height:80px;border:3px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg)}}
+.load-txt{font-family:'Oswald',sans-serif;font-size:24px;color:var(--accent);letter-spacing:2px;text-align:center;}
+.load-sub{color:var(--muted);font-size:13px;text-align:center;}
+
+/* ── APP ── */
+#app{display:none;}
+.app-hdr{background:var(--surface);border-bottom:1px solid var(--border);padding:18px 20px 14px;position:sticky;top:0;z-index:100;}
+.app-hdr-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
+.app-logo{font-family:'Oswald',sans-serif;font-size:22px;font-weight:700;letter-spacing:2px;color:var(--accent);}
+.btn-cfg{background:var(--surface2);border:1px solid var(--border);color:var(--muted);font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:7px 14px;border-radius:8px;cursor:pointer;transition:all .2s;}
+.btn-cfg:hover{border-color:var(--accent);color:var(--accent);}
+.chips{display:flex;gap:6px;flex-wrap:wrap;}
+.chip{background:var(--surface2);border:1px solid var(--border);border-radius:100px;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:4px 10px;color:var(--muted);}
+.chip.lvl{border-color:rgba(0,212,255,.3);color:var(--accent);}
+.chip.obj{border-color:rgba(127,255,107,.3);color:var(--accent3);}
+.chip.days{border-color:rgba(255,107,53,.3);color:var(--accent2);}
+.dtabs{display:flex;gap:6px;padding:14px 20px;overflow-x:auto;scrollbar-width:none;background:var(--bg);}
+.dtabs::-webkit-scrollbar{display:none;}
+.dtab{flex-shrink:0;padding:8px 16px;border-radius:100px;border:1px solid var(--border);background:var(--surface);color:var(--muted);font-size:12px;font-weight:700;cursor:pointer;transition:all .2s;}
+.dtab.active{background:var(--accent);color:#000;border-color:var(--accent);}
+.dtab.rest{opacity:.5;}
+.prog-wrap{padding:0 20px 14px;}
+.prog-row{display:flex;justify-content:space-between;font-size:11px;margin-bottom:6px;}
+.prog-row span:first-child{color:var(--muted);text-transform:uppercase;letter-spacing:1px;}
+.prog-row span:last-child{color:var(--accent);font-weight:700;}
+.prog-track{height:4px;background:var(--border);border-radius:100px;overflow:hidden;}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent3));border-radius:100px;transition:width .5s ease;}
+.dpanel{display:none;padding:0 20px 80px;}
+.dpanel.active{display:block;}
+.dp-hdr{display:flex;align-items:center;justify-content:space-between;padding:14px 0 12px;}
+.dp-title{font-family:'Oswald',sans-serif;font-size:36px;font-weight:700;}
+.focus-tag{background:rgba(255,107,53,.12);border:1px solid rgba(255,107,53,.25);color:var(--accent2);font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:5px 10px;border-radius:6px;}
+.ex-list{display:flex;flex-direction:column;gap:10px;}
+.ex-card{background:var(--surface);border:1.5px solid var(--border);border-radius:16px;overflow:hidden;transition:border-color .2s;}
+.ex-card.done{border-color:rgba(127,255,107,.4);}
+.ex-top{display:flex;align-items:center;gap:12px;padding:14px;cursor:pointer;}
+.ex-num{font-family:'Oswald',sans-serif;font-size:20px;color:var(--muted);width:26px;flex-shrink:0;}
+.ex-body{flex:1;}
+.ex-name{font-weight:700;font-size:14px;margin-bottom:5px;}
+.ex-tags{display:flex;gap:6px;flex-wrap:wrap;}
+.ex-tag{font-size:10px;padding:2px 8px;border-radius:4px;background:var(--surface2);color:var(--muted);}
+.ex-tag.hl{background:rgba(0,212,255,.08);color:var(--accent);}
+.ex-done-btn{width:32px;height:32px;border-radius:50%;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;cursor:pointer;transition:all .25s;background:transparent;}
+.ex-card.done .ex-done-btn{background:var(--accent3);border-color:var(--accent3);color:#000;}
+.ex-detail{display:none;border-top:1px solid var(--border);}
+.ex-card.open .ex-detail{display:block;animation:fadeSlide .25s ease;}
+
+/* ── EXERCISE MEDIA ── */
+.ex-media{background:#000;display:flex;align-items:center;justify-content:center;min-height:200px;position:relative;overflow:hidden;}
+.ex-media img{width:100%;max-height:260px;object-fit:contain;display:block;}
+.ex-media-fallback{display:none;width:100%;height:200px;align-items:center;justify-content:center;flex-direction:column;gap:12px;background:var(--surface2);}
+.ex-media-fallback .fb-icon{font-size:48px;opacity:.4;}
+.ex-media-fallback .fb-txt{font-size:12px;color:var(--muted);}
+.media-src{position:absolute;bottom:6px;right:8px;font-size:9px;color:rgba(255,255,255,.3);letter-spacing:.5px;}
+
+.ex-tips{padding:14px 16px 16px;}
+.ex-tips p{font-size:13px;color:#8a9db0;line-height:1.6;margin-bottom:10px;}
+.tips-ul{list-style:none;display:flex;flex-direction:column;gap:6px;}
+.tips-ul li{display:flex;gap:8px;align-items:flex-start;font-size:12px;color:#7a8fa0;}
+.tips-ul li::before{content:'▸';color:var(--accent);flex-shrink:0;margin-top:1px;}
+.timer-btn{margin:0 16px 16px;width:calc(100% - 32px);padding:12px;background:rgba(0,212,255,.08);border:1px solid rgba(0,212,255,.2);color:var(--accent);font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;border-radius:10px;cursor:pointer;transition:all .2s;}
+.timer-btn:hover{background:rgba(0,212,255,.15);}
+
+/* ── REST ── */
+.rest-panel{text-align:center;padding:64px 24px;}
+.rest-emoji{font-size:72px;}
+.rest-title{font-family:'Oswald',sans-serif;font-size:44px;color:var(--muted);margin:12px 0 8px;}
+.rest-sub{color:var(--muted);font-size:14px;line-height:1.5;}
+
+/* ── TIMER ── */
+#timer-ov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.93);z-index:999;align-items:center;justify-content:center;flex-direction:column;gap:12px;}
+#timer-ov.open{display:flex;}
+.t-count{font-family:'Oswald',sans-serif;font-size:110px;color:var(--accent);line-height:1;text-shadow:0 0 40px rgba(0,212,255,.4);}
+.t-lbl{color:var(--muted);font-size:12px;letter-spacing:3px;text-transform:uppercase;}
+.t-close{margin-top:32px;padding:14px 48px;background:var(--surface);border:1px solid var(--border);color:var(--text);font-size:14px;border-radius:100px;cursor:pointer;}
+
+/* ── CHANGE SHEET ── */
+#chg-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:998;align-items:flex-end;justify-content:center;}
+#chg-modal.open{display:flex;}
+.chg-sheet{width:100%;max-width:480px;background:var(--surface);border-radius:24px 24px 0 0;border-top:1px solid var(--border);padding:24px 20px 40px;animation:slideUp .3s cubic-bezier(.34,1.56,.64,1);}
+@keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+.chg-handle{width:40px;height:4px;background:var(--border);border-radius:2px;margin:0 auto 24px;}
+.chg-title{font-family:'Oswald',sans-serif;font-size:26px;margin-bottom:20px;text-align:center;}
+.chg-actions{display:flex;flex-direction:column;gap:12px;}
+.chg-btn{padding:16px;border-radius:14px;font-size:15px;font-weight:700;cursor:pointer;transition:all .2s;border:1.5px solid;text-align:center;}
+.chg-btn.prim{background:linear-gradient(135deg,var(--accent),#0099cc);border-color:transparent;color:#000;}
+.chg-btn.sec{background:transparent;border-color:var(--border);color:var(--muted);}
+</style>
+</head>
+<body>
+
+<!-- SETUP -->
+<div id="setup">
+  <div class="s-header">
+    <div class="s-logo">CALISTENIA PRO</div>
+    <div class="s-tag">Seu programa personalizado</div>
+  </div>
+  <div class="s-body">
+    <div class="s-dots">
+      <div class="dot active" id="d0"></div>
+      <div class="dot" id="d1"></div>
+      <div class="dot" id="d2"></div>
+    </div>
+
+    <!-- STEP 0: NÍVEL -->
+    <div class="s-step active" id="s0">
+      <div class="s-label">Passo 1 de 3</div>
+      <div class="s-title">Qual é seu nível atual?</div>
+      <div class="opt-grid">
+        <div class="opt" onclick="pick('level','iniciante',this)">
+          <div class="opt-icon">🌱</div>
+          <div class="opt-info"><div class="opt-name">Iniciante</div><div class="opt-desc">Menos de 6 meses. Foco em aprender os movimentos e construir a base.</div></div>
+          <div class="opt-chk">✓</div>
+        </div>
+        <div class="opt" onclick="pick('level','intermediario',this)">
+          <div class="opt-icon">⚡</div>
+          <div class="opt-info"><div class="opt-name">Intermediário</div><div class="opt-desc">6 meses a 2 anos. Consegue fazer flexões, agachamentos e barras.</div></div>
+          <div class="opt-chk">✓</div>
+        </div>
+        <div class="opt" onclick="pick('level','avancado',this)">
+          <div class="opt-icon">🔥</div>
+          <div class="opt-info"><div class="opt-name">Avançado</div><div class="opt-desc">Mais de 2 anos. Domina movimentos compostos, busca muscle-up e handstand.</div></div>
+          <div class="opt-chk">✓</div>
+        </div>
+      </div>
+      <div class="s-nav"><button class="btn-next" id="n0" onclick="go(0)" disabled>PRÓXIMO →</button></div>
+    </div>
+
+    <!-- STEP 1: OBJETIVO -->
+    <div class="s-step" id="s1">
+      <div class="s-label">Passo 2 de 3</div>
+      <div class="s-title">Qual é seu objetivo?</div>
+      <div class="opt-grid">
+        <div class="opt" onclick="pick('goal','forca',this)">
+          <div class="opt-icon">💪</div>
+          <div class="opt-info"><div class="opt-name">Força</div><div class="opt-desc">Séries pesadas e curtas. Foco em intensidade máxima.</div></div>
+          <div class="opt-chk">✓</div>
+        </div>
+        <div class="opt" onclick="pick('goal','hipertrofia',this)">
+          <div class="opt-icon">🏋️</div>
+          <div class="opt-info"><div class="opt-name">Hipertrofia</div><div class="opt-desc">Ganho de massa e definição. Volume moderado com progressão.</div></div>
+          <div class="opt-chk">✓</div>
+        </div>
+        <div class="opt" onclick="pick('goal','resistencia',this)">
+          <div class="opt-icon">🏃</div>
+          <div class="opt-info"><div class="opt-name">Resistência</div><div class="opt-desc">Alta repetição, melhora cardiovascular e endurance muscular.</div></div>
+          <div class="opt-chk">✓</div>
+        </div>
+        <div class="opt" onclick="pick('goal','perda_peso',this)">
+          <div class="opt-icon">🔥</div>
+          <div class="opt-info"><div class="opt-name">Perda de Peso</div><div class="opt-desc">Circuitos metabólicos com alta queima calórica.</div></div>
+          <div class="opt-chk">✓</div>
+        </div>
+      </div>
+      <div class="s-nav">
+        <button class="btn-back" onclick="go(-1,1)">←</button>
+        <button class="btn-next" id="n1" onclick="go(1)" disabled>PRÓXIMO →</button>
+      </div>
+    </div>
+
+    <!-- STEP 2: DIAS -->
+    <div class="s-step" id="s2">
+      <div class="s-label">Passo 3 de 3</div>
+      <div class="s-title">Quantos dias por semana?</div>
+      <div class="days-grid">
+        <div class="day-opt" onclick="pickDays(2,this)"><div class="day-opt-n">2</div><div class="day-opt-l">dias</div></div>
+        <div class="day-opt" onclick="pickDays(3,this)"><div class="day-opt-n">3</div><div class="day-opt-l">dias</div></div>
+        <div class="day-opt" onclick="pickDays(4,this)"><div class="day-opt-n">4</div><div class="day-opt-l">dias</div></div>
+        <div class="day-opt" onclick="pickDays(5,this)"><div class="day-opt-n">5</div><div class="day-opt-l">dias</div></div>
+        <div class="day-opt" onclick="pickDays(6,this)"><div class="day-opt-n">6</div><div class="day-opt-l">dias</div></div>
+      </div>
+      <div class="s-nav">
+        <button class="btn-back" onclick="go(-1,2)">←</button>
+        <button class="btn-next" id="n2" onclick="generate()" disabled>GERAR MEU TREINO ⚡</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- LOADING -->
+<div id="loading">
+  <div class="spin"></div>
+  <div class="load-txt">CRIANDO SEU PROGRAMA</div>
+  <div class="load-sub" id="load-msg">Analisando seu perfil...</div>
+</div>
+
+<!-- APP -->
+<div id="app">
+  <div class="app-hdr">
+    <div class="app-hdr-top">
+      <div class="app-logo">CALISTENIA PRO</div>
+      <button class="btn-cfg" onclick="openChg()">⚙ Alterar</button>
+    </div>
+    <div class="chips">
+      <span class="chip lvl" id="c-lvl">—</span>
+      <span class="chip obj" id="c-obj">—</span>
+      <span class="chip days" id="c-days">—</span>
+    </div>
+  </div>
+  <div class="dtabs" id="dtabs"></div>
+  <div class="prog-wrap">
+    <div class="prog-row"><span>Progresso do dia</span><span id="ppct">0%</span></div>
+    <div class="prog-track"><div class="prog-fill" id="pfill" style="width:0%"></div></div>
+  </div>
+  <div id="panels"></div>
+</div>
+
+<!-- TIMER -->
+<div id="timer-ov">
+  <div class="t-count" id="tc">60</div>
+  <div class="t-lbl">Descanso entre séries</div>
+  <button class="t-close" onclick="closeTimer()">✕ Cancelar</button>
+</div>
+
+<!-- CHANGE SHEET -->
+<div id="chg-modal">
+  <div class="chg-sheet">
+    <div class="chg-handle"></div>
+    <div class="chg-title">O que deseja fazer?</div>
+    <div class="chg-actions">
+      <div class="chg-btn prim" onclick="resetApp()">🔄 Trocar programa</div>
+      <div class="chg-btn sec" onclick="closeChg()">✕ Manter programa atual</div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── STATE ──
+const S = { level:'', goal:'', days:0 };
+let curDay = 0;
+let prog = null;
+
+// ── GIF MAP (Wikimedia Commons CC-BY-SA) ──
+// Maps avatarType → animated GIF URL
+const GIFS = {
+  pushup:   'https://upload.wikimedia.org/wikipedia/commons/3/3d/Pushups.gif',
+  squat:    'https://upload.wikimedia.org/wikipedia/commons/0/03/Bodyweight_Squats.gif',
+  pullup:   'https://upload.wikimedia.org/wikipedia/commons/3/3a/Pullup.gif',
+  dip:      'https://upload.wikimedia.org/wikipedia/commons/3/3d/Pushups.gif', // closest
+  plank:    'https://upload.wikimedia.org/wikipedia/commons/3/3d/Pushups.gif', // use pushup as reference
+  lunge:    'https://upload.wikimedia.org/wikipedia/commons/0/03/Bodyweight_Squats.gif',
+  bridge:   'https://upload.wikimedia.org/wikipedia/commons/e/ef/Situps.gif',
+  pike:     'https://upload.wikimedia.org/wikipedia/commons/8/84/Pike_Push_Ups.gif',
+  row:      'https://upload.wikimedia.org/wikipedia/commons/3/3a/Pullup.gif',
+  deadhang: 'https://upload.wikimedia.org/wikipedia/commons/3/3a/Pullup.gif',
+  burpee:   'https://upload.wikimedia.org/wikipedia/commons/3/39/Burpees.gif',
+  crunch:   'https://upload.wikimedia.org/wikipedia/commons/e/ef/Situps.gif',
+  hollow:   'https://upload.wikimedia.org/wikipedia/commons/e/ef/Situps.gif',
+  superman: 'https://upload.wikimedia.org/wikipedia/commons/e/ef/Situps.gif',
+  jumpjack: 'https://upload.wikimedia.org/wikipedia/commons/6/66/Skierjacks.gif',
+  muscleup: 'https://upload.wikimedia.org/wikipedia/commons/8/85/Muscle-up.gif',
+  chinup:   'https://upload.wikimedia.org/wikipedia/commons/3/3a/Pullup.gif',
+  situp:    'https://upload.wikimedia.org/wikipedia/commons/e/ef/Situps.gif',
+};
+
+// ── SETUP ──
+function pick(key, val, el) {
+  S[key] = val;
+  el.closest('.opt-grid').querySelectorAll('.opt').forEach(o => o.classList.remove('sel'));
+  el.classList.add('sel');
+  document.getElementById(key === 'level' ? 'n0' : 'n1').disabled = false;
+}
+function pickDays(n, el) {
+  S.days = n;
+  document.querySelectorAll('.day-opt').forEach(b => b.classList.remove('sel'));
+  el.classList.add('sel');
+  document.getElementById('n2').disabled = false;
+}
+function go(dir, from) {
+  const cur = from !== undefined ? from : (dir > 0 ? [0,1].find(i => document.getElementById('s'+i).classList.contains('active')) : null);
+  const c = cur ?? (dir > 0 ? 0 : 1);
+  const next = c + dir;
+  document.getElementById('s'+c).classList.remove('active');
+  document.getElementById('s'+next).classList.add('active');
+  document.querySelectorAll('.dot').forEach((d,i) => d.classList.toggle('active', i === next));
+}
+
+// ── GENERATE ──
+async function generate() {
+  document.getElementById('setup').style.display = 'none';
+  const ldiv = document.getElementById('loading');
+  ldiv.style.display = 'flex';
+  const msgs = ['Analisando seu perfil...','Montando split de treino...','Selecionando exercícios...','Configurando séries e reps...','Finalizando programa...'];
+  let mi = 0;
+  const msgEl = document.getElementById('load-msg');
+  const iv = setInterval(() => { if(mi < msgs.length) msgEl.textContent = msgs[mi++]; }, 700);
+
+  const lvlMap = {iniciante:'Iniciante (menos de 6 meses)',intermediario:'Intermediário (6 meses a 2 anos)',avancado:'Avançado (mais de 2 anos)'};
+  const gMap = {forca:'Força máxima',hipertrofia:'Hipertrofia (ganho muscular)',resistencia:'Resistência e endurance',perda_peso:'Perda de peso/queima calórica'};
+
+  const prompt = `Você é especialista em calistenia. Crie um programa semanal completo em JSON para:
+- Nível: ${lvlMap[S.level]}
+- Objetivo: ${gMap[S.goal]}
+- Dias de treino: ${S.days} dias por semana
+
+Retorne APENAS JSON válido sem texto extra:
+{
+  "weekDays": [
+    {
+      "dayName": "Segunda",
+      "isRest": false,
+      "focus": "Peito e Tríceps",
+      "exercises": [
+        {
+          "name": "Nome do exercício",
+          "sets": "3",
+          "reps": "8-12",
+          "muscle": "músculo principal",
+          "execution": "Como executar em 2 frases.",
+          "tips": ["dica 1","dica 2","dica 3"],
+          "avatarType": "pushup"
+        }
+      ]
+    }
+  ]
+}
+
+avatarType deve ser um de: pushup, squat, pullup, dip, plank, lunge, bridge, pike, row, deadhang, burpee, crunch, hollow, superman, jumpjack, muscleup, chinup, situp
+
+Regras:
+- Exatamente ${S.days} dias treino e ${7-S.days} dias descanso na semana
+- Cada dia treino: 4-6 exercícios adequados ao nível
+- Dias descanso: isRest:true, exercises:[]
+- Adapte reps/séries: força=3-5 reps alta intensidade, hipertrofia=8-15 reps, resistência=15-25 reps, perda_peso=circuito AMRAP
+- Semana começa na Segunda`;
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 4000,
+        messages: [{role:'user', content: prompt}]
+      })
+    });
+    const data = await res.json();
+    const raw = data.content.map(b => b.text||'').join('');
+    prog = JSON.parse(raw.replace(/```json|```/g,'').trim());
+  } catch(e) {
+    prog = fallback();
+  }
+
+  clearInterval(iv);
+  ldiv.style.display = 'none';
+  renderApp();
+}
+
+// ── RENDER APP ──
+function renderApp() {
+  const lvlLabel = {iniciante:'🌱 Iniciante',intermediario:'⚡ Intermediário',avancado:'🔥 Avançado'};
+  const gLabel = {forca:'💪 Força',hipertrofia:'🏋️ Hipertrofia',resistencia:'🏃 Resistência',perda_peso:'🔥 Perda de Peso'};
+  document.getElementById('c-lvl').textContent = lvlLabel[S.level]||S.level;
+  document.getElementById('c-obj').textContent = gLabel[S.goal]||S.goal;
+  document.getElementById('c-days').textContent = S.days+'d/semana';
+
+  const tabsEl = document.getElementById('dtabs');
+  const panelsEl = document.getElementById('panels');
+  tabsEl.innerHTML = ''; panelsEl.innerHTML = '';
+
+  prog.weekDays.forEach((day, i) => {
+    // Tab
+    const tab = document.createElement('div');
+    tab.className = 'dtab' + (i===0?' active':'') + (day.isRest?' rest':'');
+    tab.textContent = day.dayName.substring(0,3);
+    tab.onclick = () => switchDay(i);
+    tab.id = 'tab'+i;
+    tabsEl.appendChild(tab);
+
+    // Panel
+    const panel = document.createElement('div');
+    panel.className = 'dpanel' + (i===0?' active':'');
+    panel.id = 'pan'+i;
+
+    if (day.isRest) {
+      const restEmojis = ['🌿','🧘','🛁','😴','🏖️'];
+      panel.innerHTML = `<div class="rest-panel">
+        <div class="rest-emoji">${restEmojis[i%restEmojis.length]}</div>
+        <div class="rest-title">DESCANSO</div>
+        <div class="rest-sub">Recuperação ativa: caminhada leve,<br>alongamento ou mobilidade.<br>O músculo cresce no descanso.</div>
+      </div>`;
+    } else {
+      const exHtml = (day.exercises||[]).map((ex, j) => {
+        const gifUrl = GIFS[ex.avatarType] || GIFS.pushup;
+        const tipsHtml = (ex.tips||[]).map(t => `<li>${t}</li>`).join('');
+        return `<div class="ex-card" id="ec${i}-${j}">
+          <div class="ex-top" onclick="toggleEx(${i},${j})">
+            <div class="ex-num">${String(j+1).padStart(2,'0')}</div>
+            <div class="ex-body">
+              <div class="ex-name">${ex.name}</div>
+              <div class="ex-tags">
+                <span class="ex-tag hl">${ex.sets}×${ex.reps}</span>
+                <span class="ex-tag">${ex.muscle||''}</span>
+              </div>
+            </div>
+            <div class="ex-done-btn" onclick="event.stopPropagation();markDone(${i},${j})">✓</div>
+          </div>
+          <div class="ex-detail">
+            <div class="ex-media">
+              <img
+                src="${gifUrl}"
+                alt="${ex.name}"
+                loading="lazy"
+                onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+              />
+              <div class="ex-media-fallback">
+                <div class="fb-icon">🏋️</div>
+                <div class="fb-txt">Imagem indisponível</div>
+              </div>
+              <div class="media-src">Wikimedia Commons • CC-BY-SA</div>
+            </div>
+            <div class="ex-tips">
+              <p>${ex.execution||''}</p>
+              <ul class="tips-ul">${tipsHtml}</ul>
+            </div>
+            <button class="timer-btn" onclick="startTimer(60)">⏱ Iniciar descanso (60s)</button>
+          </div>
+        </div>`;
+      }).join('');
+
+      panel.innerHTML = `<div class="dp-hdr">
+        <div class="dp-title">${day.dayName.toUpperCase()}</div>
+        <div class="focus-tag">${day.focus||''}</div>
+      </div>
+      <div class="ex-list">${exHtml}</div>`;
+    }
+    panelsEl.appendChild(panel);
+  });
+
+  document.getElementById('app').style.display = 'block';
+  updateProg();
+}
+
+// ── INTERACTIONS ──
+function switchDay(i) {
+  curDay = i;
+  document.querySelectorAll('.dtab').forEach((t,j) => t.classList.toggle('active', j===i));
+  document.querySelectorAll('.dpanel').forEach((p,j) => p.classList.toggle('active', j===i));
+  updateProg();
+}
+
+function toggleEx(di, ei) {
+  const card = document.getElementById(`ec${di}-${ei}`);
+  const wasOpen = card.classList.contains('open');
+  document.querySelectorAll(`#pan${di} .ex-card.open`).forEach(c => c.classList.remove('open'));
+  if (!wasOpen) card.classList.add('open');
+}
+
+function markDone(di, ei) {
+  document.getElementById(`ec${di}-${ei}`).classList.toggle('done');
+  updateProg();
+}
+
+function updateProg() {
+  const pan = document.getElementById('pan'+curDay);
+  if (!pan) return;
+  const total = pan.querySelectorAll('.ex-card').length;
+  const done = pan.querySelectorAll('.ex-card.done').length;
+  if (!total) { document.getElementById('ppct').textContent='—'; document.getElementById('pfill').style.width='0%'; return; }
+  const pct = Math.round((done/total)*100);
+  document.getElementById('ppct').textContent = pct+'%';
+  document.getElementById('pfill').style.width = pct+'%';
+}
+
+// ── TIMER ──
+let tiv;
+function startTimer(sec) {
+  clearInterval(tiv);
+  let r = sec;
+  document.getElementById('tc').textContent = r;
+  document.getElementById('timer-ov').classList.add('open');
+  tiv = setInterval(() => {
+    r--;
+    document.getElementById('tc').textContent = r > 0 ? r : '✓';
+    if (r <= 0) clearInterval(tiv);
+  }, 1000);
+}
+function closeTimer() { clearInterval(tiv); document.getElementById('timer-ov').classList.remove('open'); }
+
+// ── CHANGE ──
+function openChg() { document.getElementById('chg-modal').classList.add('open'); }
+function closeChg() { document.getElementById('chg-modal').classList.remove('open'); }
+function resetApp() {
+  closeChg();
+  document.getElementById('app').style.display = 'none';
+  S.level=''; S.goal=''; S.days=0;
+  document.querySelectorAll('.opt').forEach(o => o.classList.remove('sel'));
+  document.querySelectorAll('.day-opt').forEach(b => b.classList.remove('sel'));
+  ['n0','n1','n2'].forEach(id => document.getElementById(id).disabled = true);
+  document.querySelectorAll('.s-step').forEach(s => s.classList.remove('active'));
+  document.getElementById('s0').classList.add('active');
+  document.querySelectorAll('.dot').forEach((d,i) => d.classList.toggle('active', i===0));
+  document.getElementById('setup').style.display = 'flex';
+}
+
+// ── FALLBACK PROGRAM ──
+function fallback() {
+  return {weekDays:[
+    {dayName:"Segunda",isRest:false,focus:"Peito · Tríceps",exercises:[
+      {name:"Flexão Padrão",sets:"3",reps:"8-12",muscle:"Peito",execution:"Mãos na largura dos ombros, desça o peito até 5cm do chão. Cotovelos a 45° do corpo.",tips:["Core contraído durante todo o movimento","Expire ao subir","Progrida para variações mais difíceis"],avatarType:"pushup"},
+      {name:"Flexão Diamante",sets:"3",reps:"6-10",muscle:"Tríceps",execution:"Forme um losango com polegar e indicador. Cotovelos próximos ao corpo.",tips:["Excelente para isolar o tríceps","Pode fazer nos joelhos se necessário","Descida controlada"],avatarType:"pushup"},
+      {name:"Dips entre Cadeiras",sets:"3",reps:"8-12",muscle:"Tríceps",execution:"Duas cadeiras firmes. Desça cotovelos a 90°. Tronco vertical.",tips:["Pernas estendidas = mais difícil","Não desça além de 90°","Foco no tríceps"],avatarType:"dip"},
+      {name:"Prancha",sets:"3",reps:"30-45seg",muscle:"Core",execution:"Antebraços no chão, quadril neutro. Core contraído.",tips:["Quadril nem alto, nem caído","Respire normalmente","Aumente o tempo gradualmente"],avatarType:"plank"}
+    ]},
+    {dayName:"Terça",isRest:false,focus:"Costas · Bíceps",exercises:[
+      {name:"Remada Invertida",sets:"3",reps:"10-15",muscle:"Costas",execution:"Toalha em poste. Incline para trás e puxe o peito ao suporte.",tips:["Cotovelos próximos ao corpo","Contraia escápulas no topo","Mais inclinado = mais difícil"],avatarType:"row"},
+      {name:"Dead Hang",sets:"3",reps:"20-40seg",muscle:"Pegada",execution:"Pendurado na barra, braços estendidos, relaxe os ombros.",tips:["Essencial para preparar a barra fixa","Fortalece a pegada","Descomprime a coluna"],avatarType:"deadhang"},
+      {name:"Superman",sets:"3",reps:"12-15",muscle:"Lombar",execution:"Deitado de bruços. Eleve braços e pernas simultaneamente.",tips:["Não hiperestenda o pescoço","Olhe para o chão","Contraia o glúteo no topo"],avatarType:"superman"},
+      {name:"Barra Assistida",sets:"3",reps:"5-8",muscle:"Dorsal",execution:"Use elástico ou apoio. Puxe até o queixo ultrapassar a barra.",tips:["Descida controlada 3 segundos","Excêntrica = mais hipertrofia","Retraia as escápulas"],avatarType:"pullup"}
+    ]},
+    {dayName:"Quarta",isRest:true,focus:"",exercises:[]},
+    {dayName:"Quinta",isRest:false,focus:"Pernas · Core",exercises:[
+      {name:"Agachamento Livre",sets:"4",reps:"15-20",muscle:"Quadríceps",execution:"Pés na largura dos ombros. Desça até coxa paralela ao chão.",tips:["Joelhos alinhados com os pés","Não arredonde a lombar","Peso nos calcanhares"],avatarType:"squat"},
+      {name:"Afundo",sets:"3",reps:"10 cada perna",muscle:"Glúteo",execution:"Passo largo. Joelho traseiro quase toca o chão. Tronco ereto.",tips:["Joelho da frente não passa dos pés","Empurre com o calcanhar","Alterne as pernas"],avatarType:"lunge"},
+      {name:"Hip Thrust",sets:"3",reps:"15-20",muscle:"Glúteo",execution:"Ombros no sofá. Eleve o quadril formando linha reta.",tips:["Contraia glúteo no topo","Segure 2 segundos","Pés a 90° do joelho"],avatarType:"bridge"},
+      {name:"Abdominal Bicicleta",sets:"3",reps:"20 alternados",muscle:"Core",execution:"Mãos na nuca. Alterne cotovelo com joelho oposto.",tips:["Não puxe o pescoço","Movimento lento","Estenda a perna que não usa"],avatarType:"crunch"}
+    ]},
+    {dayName:"Sexta",isRest:false,focus:"Ombros · Full Body",exercises:[
+      {name:"Pike Push-Up",sets:"3",reps:"8-12",muscle:"Deltóide",execution:"V invertido com quadril alto. Desça a cabeça entre as mãos.",tips:["Imitação do desenvolvimento","Base para handstand push-up","Quadril o mais alto possível"],avatarType:"pike"},
+      {name:"Burpee",sets:"3",reps:"8-10",muscle:"Full Body",execution:"Agacha → mãos no chão → flexão → volta → salto.",tips:["Pode tirar a flexão","Descanse se necessário","Ótimo para metabolismo"],avatarType:"burpee"},
+      {name:"Hollow Body Hold",sets:"3",reps:"20-30seg",muscle:"Core",execution:"Deitado, lombar no chão. Eleve ombros e pernas 15cm.",tips:["Lombar NUNCA sai do chão","Base de toda calistenia","Dobre os joelhos se necessário"],avatarType:"hollow"},
+      {name:"Jumping Jacks",sets:"3",reps:"30",muscle:"Full Body",execution:"Pés juntos, salte abrindo pernas e elevando braços.",tips:["Bom finalizador","Mantenha ritmo constante","Aterrisse suavemente"],avatarType:"jumpjack"}
+    ]},
+    {dayName:"Sábado",isRest:true,focus:"",exercises:[]},
+    {dayName:"Domingo",isRest:true,focus:"",exercises:[]}
+  ]};
+}
+</script>
+
+<div id="install-tip" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:linear-gradient(135deg,#0f1419,#1a2535);border-top:1px solid rgba(0,212,255,0.3);padding:16px 20px;align-items:center;gap:14px;transition:opacity 0.5s;">
+  <div style="font-size:28px;flex-shrink:0;">📲</div>
+  <div style="flex:1;">
+    <div style="font-family:'Oswald',sans-serif;font-size:15px;color:#00d4ff;letter-spacing:1px;margin-bottom:2px;">INSTALAR COMO APP</div>
+    <div style="font-size:11px;color:#4a6070;line-height:1.4;">Toque em <strong style="color:#e8f0f8;">compartilhar</strong> → <strong style="color:#e8f0f8;">"Adicionar à Tela de Início"</strong></div>
+  </div>
+  <div onclick="document.getElementById('install-tip').remove()" style="font-size:20px;color:#4a6070;cursor:pointer;flex-shrink:0;">✕</div>
+</div>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js')
+      .then(reg => console.log('SW registered:', reg.scope))
+      .catch(err => console.log('SW error:', err));
+  });
+}
+
+// iOS install banner
+let deferredPrompt;
+window.addEventListener('beforeinstallprompt', e => {
+  deferredPrompt = e;
+});
+
+// Show install tip on first load for iOS
+function showInstallTip() {
+  const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+  const isInStandalone = window.navigator.standalone;
+  const shown = localStorage.getItem('install-tip-shown');
+  if (isIOS && !isInStandalone && !shown) {
+    localStorage.setItem('install-tip-shown', '1');
+    const tip = document.getElementById('install-tip');
+    if (tip) {
+      tip.style.display = 'flex';
+      setTimeout(() => { tip.style.opacity = '0'; setTimeout(() => tip.remove(), 500); }, 6000);
+    }
+  }
+}
+window.addEventListener('load', showInstallTip);
+</script>
+</body>
+</html>
